@@ -1,53 +1,50 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>形狀置中範例</title>
+    <title>Overlapping Shapes</title>
     <style>
-        /* 1. 設定容器：這是關鍵！讓容器使用 Flexbox 佈局 */
-        .shape-container {
-            display: flex;            /* 啟用 Flexbox */
-            justify-content: center; /* 讓所有內部元件水平置中 */
-            align-items: center;     /* 讓所有內部元件垂直置中 */
-            
-            width: 300px;            /* 設定容器寬高（視需要調整） */
-            height: 200px;
-            margin: 50px auto;       /* 讓容器本身在頁面置中並加上間距 */
-            border: 1px solid #ddd;   /* 加上淡淡的邊框方便觀察容器範圍 */
-            position: relative;      /* 為稍後的 z-index 層次做準備 */
+        /* This rule styles the outer container for positioning */
+        .container {
+            position: relative; /* Establish relative positioning for children */
+            width: 400px;
+            height: 250px;
+            margin: 50px auto; /* Centering for better visibility */
+            border: 1px solid #ccc; /* Adding a light border to see the container */
         }
 
-        /* 2. 設定通用形狀屬性 */
-        .shape {
-            /* 基本樣式 */
-        }
-
-        /* 3. 設定矩形 (Rectangle) */
+        /* This rule creates the rectangle */
         .rectangle {
-            width: 150px;
-            height: 120px;
-            background-color: blue;
-            border: 3px solid black;
-            box-sizing: border-box; /* 確保邊框包含在寬高中 */
-            z-index: 1;             /* 層次較低 */
+            position: absolute; /* Place relative to the .container */
+            top: 50px; /* Distance from the top of .container */
+            left: 50px; /* Distance from the left of .container */
+            width: 200px; /* The rectangle's width */
+            height: 100px; /* The rectangle's height */
+            background-color: blue; /* Set the fill color to blue */
+            border: 2px solid black; /* Add a black border */
         }
 
-        /* 4. 設定圓形 (Circle) */
+        /* This rule creates the circle */
         .circle {
-            width: 100px;
-            height: 100px;
-            background-color: yellow;
-            border: 4px solid #FF5733;
-            border-radius: 50%;     /* 變成圓形 */
-            box-sizing: border-box; /* 確保邊框包含在寬高中 */
-            z-index: 2;             /* 層次較高，疊在矩形上面 */
-
-            /* 關鍵的一步：為了重疊在矩形上，而不只是並排 */
-            margin-left: -50px;    /* 使用負 Margin 讓圓形左移與矩形重疊 */
+            position: absolute; /* Place relative to the .container */
+            top: 50px; /* Distance from top of .container, same as rectangle for overlap */
+            left: 150px; /* Distance from left of .container to create overlap */
+            width: 100px; /* Square base: width = height */
+            height: 100px; /* Square base: height = width */
+            background-color: yellow; /* Set the fill color to yellow */
+            border: 2px solid red; /* Add a red border */
+            border-radius: 50%; /* The key to making it a circle instead of a square */
         }
     </style>
 </head>
 <body>
 
-    <h1 style="text-align:center;">圓形在矩形中心點重疊</h1>
+    <div class="container">
+        <div class="rectangle"></div>
+        
+        <div class="circle"></div>
+    </div>
+
+</body>
+</html>
