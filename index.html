@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlapping Shapes</title>
+    <style>
+        /* Container style to hold the two absolute elements together and center on the page */
+        .shape-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto; /* Centers the whole container */
+        }
+
+        /* Style for the blue square with a black border */
+        .rectangle {
+            position: absolute;
+            top: 25px;   /* Position from top of container */
+            left: 25px;  /* Position from left of container */
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            border: 5px solid black;
+            box-sizing: border-box; /* Ensures border is inside the width/height */
+            z-index: 1; /* Sets the drawing order (lower number means further back) */
+        }
+
+        /* Style for the overlapping yellow circle with a thick red border */
+        .circle {
+            position: absolute;
+            top: 50px;   /* Adjusted position to show overlapping */
+            left: 125px; /* Overlaps with the rectangle */
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+            border: 10px solid red; /* To match the example's bold red border */
+            border-radius: 50%; /* This CSS property creates the perfect circle shape */
+            box-sizing: border-box;
+            z-index: 2; /* Sets drawing order (higher number is on top) */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="shape-container">
+        <div class="rectangle"></div>
+        <div class="circle"></div>
+    </div>
+
+</body>
+</html>
